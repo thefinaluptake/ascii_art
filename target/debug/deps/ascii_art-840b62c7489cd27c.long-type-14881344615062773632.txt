@@ -1,1 +1,0 @@
-(char, iter::adapters::chain::Chain<image::buffer_::Pixels<'_, Rgb<u8>>, iter::sources::once::Once<&Rgb<u8>>>)
