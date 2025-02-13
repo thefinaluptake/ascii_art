@@ -1,0 +1,12 @@
+/home/iris/Programming/ascii_art/target/release/deps/libcolored-f29ac4f466cbf17a.rmeta: /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/lib.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/color.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/control.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/error.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/style.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/customcolors.rs
+
+/home/iris/Programming/ascii_art/target/release/deps/libcolored-f29ac4f466cbf17a.rlib: /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/lib.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/color.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/control.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/error.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/style.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/customcolors.rs
+
+/home/iris/Programming/ascii_art/target/release/deps/colored-f29ac4f466cbf17a.d: /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/lib.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/color.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/control.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/error.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/style.rs /home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/customcolors.rs
+
+/home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/lib.rs:
+/home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/color.rs:
+/home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/control.rs:
+/home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/error.rs:
+/home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/style.rs:
+/home/iris/.cargo/registry/src/index.crates.io-6f17d22bba15001f/colored-3.0.0/src/customcolors.rs:
