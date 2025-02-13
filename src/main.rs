@@ -15,17 +15,18 @@ fn main() -> anyhow::Result<()> {
 
     let mut brightness_matrix = vec![vec![0; width as usize]; height as usize];
 
-    for (image_row, brightness_row) in image.rows().zip(brightness_matrix.iter_mut()) {
-        for (image_pixel, brightness_pixel) in image_row.zip(brightness_row.iter_mut()) {
-            // println!("{pixel:?}");
+    for (image_pixel, brightness_pixel) in image
+        .rows()
+        .flatten()
+        .zip(brightness_matrix.iter_mut().flatten())
+    {
+        // println!("{pixel:?}");
 
-            let brightness = (((image_pixel.0[0] as f32)
-                + (image_pixel.0[1] as f32)
-                + (image_pixel.0[2] as f32))
+        let brightness =
+            (((image_pixel.0[0] as f32) + (image_pixel.0[1] as f32) + (image_pixel.0[2] as f32))
                 / 3.0) as u8;
 
-            *brightness_pixel = brightness;
-        }
+        *brightness_pixel = brightness;
     }
 
     println!(
@@ -40,5 +41,28 @@ fn main() -> anyhow::Result<()> {
     //     }
     // }
 
+    let ascii_image: Vec<String> = brightness_matrix
+        .iter()
+        .map(|row| row.iter().map(|b| get_char_from_brightness(*b)).collect())
+        .collect();
+
+    // for line in ascii_image {
+    //     for c in line.chars() {
+    //         println!("{c}");
+    //     }
+    // }
+
     Ok(())
+}
+
+fn get_char_from_brightness(brightness: u8) -> char {
+    let num_chars = ASCII_MATRIX.chars().count();
+
+    let threshold = 256.0 / num_chars as f32;
+
+    let index = (brightness as f32 / threshold).floor() as usize;
+
+    println!("{index}, {brightness}");
+
+    ASCII_MATRIX.chars().nth(index).unwrap()
 }
