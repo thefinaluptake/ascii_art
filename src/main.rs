@@ -31,9 +31,9 @@ fn main() -> anyhow::Result<()> {
     {
         // println!("{pixel:?}");
 
-        let brightness =
-            (((image_pixel.0[0] as f32) + (image_pixel.0[1] as f32) + (image_pixel.0[2] as f32))
-                / 3.0) as u8;
+        let brightness = (0.21 * image_pixel.0[0] as f32
+            + 0.72 * image_pixel.0[1] as f32
+            + 0.07 * image_pixel.0[2] as f32) as u8;
 
         *brightness_pixel = brightness;
     }
