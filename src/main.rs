@@ -1,24 +1,40 @@
-use image::ImageReader;
+use colored::Colorize;
+use image::{ImageReader, Rgb};
 
 const ASCII_MATRIX: &'static str =
     "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
 
 fn main() -> anyhow::Result<()> {
-    let image = ImageReader::open("half_hyacine.jpg")?.decode()?;
+    let term_size = termsize::get().unwrap();
+
+    let max_width = term_size.cols;
+    let max_height = term_size.rows;
+
+    let image = ImageReader::open("hyacine.jpg")?.decode()?;
 
     let mut width = image.width();
     let mut height = image.height();
 
     println!("Successfully loaded image!\nImage size: {width} x {height}");
 
-    if width > 220 {
-        let div = width as f32 / 220.;
+    if width > (max_width as u32) {
+        let div = width as f32 / (max_width as f32);
+
+        width = (width as f32 / div) as u32;
+        height = (height as f32 / div) as u32;
+    }
+
+    if height > (max_height as u32) {
+        let div = height as f32 / max_height as f32;
 
         width = (width as f32 / div) as u32;
         height = (height as f32 / div) as u32;
     }
 
     let image = image.resize(width, height, image::imageops::FilterType::Nearest);
+
+    width = image.width();
+    height = image.height();
 
     let image = image.into_rgb8();
 
@@ -61,8 +77,19 @@ fn main() -> anyhow::Result<()> {
     //     }
     // }
 
-    for line in ascii_image {
-        println!("{line}");
+    for (c, pixel) in ascii_image
+        .iter()
+        .flat_map(|line| line.chars().chain(std::iter::once('\n')))
+        .zip(
+            image
+                .rows()
+                .flat_map(|row| row.into_iter().chain(std::iter::once(&Rgb([0, 0, 0])))),
+        )
+    {
+        print!(
+            "{}",
+            <char as Into<String>>::into(c).truecolor(pixel.0[0], pixel.0[1], pixel.0[2])
+        );
     }
 
     Ok(())
