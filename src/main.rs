@@ -6,10 +6,19 @@ const ASCII_MATRIX: &'static str =
 fn main() -> anyhow::Result<()> {
     let image = ImageReader::open("half_hyacine.jpg")?.decode()?;
 
-    let width = image.width();
-    let height = image.height();
+    let mut width = image.width();
+    let mut height = image.height();
 
     println!("Successfully loaded image!\nImage size: {width} x {height}");
+
+    if width > 220 {
+        let div = width as f32 / 220.;
+
+        width = (width as f32 / div) as u32;
+        height = (height as f32 / div) as u32;
+    }
+
+    let image = image.resize(width, height, image::imageops::FilterType::Nearest);
 
     let image = image.into_rgb8();
 
@@ -52,6 +61,10 @@ fn main() -> anyhow::Result<()> {
     //     }
     // }
 
+    for line in ascii_image {
+        println!("{line}");
+    }
+
     Ok(())
 }
 
@@ -61,8 +74,6 @@ fn get_char_from_brightness(brightness: u8) -> char {
     let threshold = 256.0 / num_chars as f32;
 
     let index = (brightness as f32 / threshold).floor() as usize;
-
-    println!("{index}, {brightness}");
 
     ASCII_MATRIX.chars().nth(index).unwrap()
 }
